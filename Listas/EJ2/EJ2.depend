@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1252541232 source:e:\andres\ej2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1252541377 source:c:\users\andrés cabrera\documents\programacion\estructura de datos\listas\ej2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

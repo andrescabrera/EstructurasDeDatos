@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1254344999 source:c:\users\andrés cabrera\documents\programacion\tp3 ej 4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

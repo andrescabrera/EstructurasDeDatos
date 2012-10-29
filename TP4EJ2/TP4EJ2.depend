@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1254371299 source:c:\users\andrés cabrera\documents\programacion\tp4ej2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

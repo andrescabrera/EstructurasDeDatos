@@ -1,0 +1,15 @@
+DjHogar 0.1: Max310 + SK510
+
+DjHogar 0.2: Max310 + SK510 + SM95
+DjHogar 0.2.1: Max310 + SK510 + SM95 + DJ3
+DjHogar 0.2.2: Max310 + SK510 + SM95 + DJ9
+
+DjHogar 0.3: Max310 + SK510 + VZ5
+DjHogar 0.3.1: Max310 + SK510 + VZ5 + DJ3
+DjHogar 0.3.2: Max310 + SK510 + VZ5 + DJ3
+DjHogar 0.3.2.1: Max310 + SK510 + VZ5 + DJ9 + MIC pro30
+
+DjHogar 0.4: Max310 + SK510 + VZ6
+DjHogar 0.4.1: Max310 + SK510 + VZ6 + DJ3
+DjHogar 0.4.2.1: Max310 + SK510 + VZ6 + DJ9 + MIC pro30
+DjHogar 0.4.2: Max310 + SK510 + VZ6 + DJ9

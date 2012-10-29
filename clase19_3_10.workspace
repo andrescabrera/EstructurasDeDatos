@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Workspace">
+		<Project filename="Pizarron1\Pizarron1.cbp" />
+		<Project filename="Pizarron2\Pizarron2.cbp" />
+		<Project filename="Pizarron3\Pizarron3.cbp" />
+		<Project filename="Pizarron4\Pizarron4.cbp" />
+		<Project filename="Pizarron5\Pizarron5.cbp" />
+		<Project filename="parono\parono.cbp" />
+		<Project filename="vectorSumaMayor\vectorSumaMayor.cbp" />
+		<Project filename="sumareinvertir\sumareinvertir.cbp" />
+		<Project filename="Recurs\Recurs.cbp" />
+		<Project filename="Pizarron6\Pizarron6.cbp" />
+		<Project filename="Pizarron7\Pizarron7.cbp" active="1" />
+		<Project filename="Pizarron6b\Pizarron6b.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>

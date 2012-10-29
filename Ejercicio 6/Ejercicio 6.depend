@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1291131628 source:e:\documentos_andrescabrera\facultad\estructura de datos y algorítmos\programacion\guia\ejercicio 6\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

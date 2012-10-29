@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1256414268 source:d:\documentos_andrescabrera\facultad\estructura de datos y algorítmos\programacion\tp\edad\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

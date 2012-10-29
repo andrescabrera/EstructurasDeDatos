@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1250118930 source:e:\estrucandres\primos\main.c
+	<stdio.h>
+	<stdlib.h>
+

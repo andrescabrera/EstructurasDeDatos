@@ -1,0 +1,96 @@
+/*
+Andrés Cabrera - TP Recursividad - Ejercicio 4
+Cargar una matriz de n filas y n columnas y calcular y mostrar.
+El producto de los elementos de la diagonal principal  en forma recursiva.
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define TAM 6
+
+void cargar(int mata[][], int n, int *fila, int *cols);
+void mostrar(int mata[][], int n, int *fila, int *cols);
+int productodiag(int mata[][], int n, int *cont);
+
+int main()
+{
+int fila=0, cols=0;
+int n;
+do
+{
+    printf("\nIngrese orden de la matriz a cargar: ");
+    scanf("%d", &n);
+}while(n<1||n>TAM);
+
+int mata[n][n];
+srand((int)time(NULL));
+cargar(mata, n, &fila, &cols);
+fila=0;
+cols=0;
+mostrar(mata, n, &fila, &cols);
+cols=0;
+fila=productodiag(mata, n-1, &cols);
+printf("El producto de la diagonal principal es: %d", fila);
+
+return EXIT_SUCCESS;
+}
+
+void cargar(int mata[TAM][TAM], int n, int *fila, int *cols)
+{
+
+
+if(*cols==n-1 && *fila<n)
+{
+    mata[*fila][*cols]=rand()%20;
+    *cols=0;
+    *fila+=1;
+    cargar(mata, n, fila ,cols);
+}
+else
+{
+    if(*fila<n && *cols<n)
+    {
+        mata[*fila][*cols]=rand()%20;
+        *cols+=1;
+        cargar(mata, n, fila, cols);
+    }
+}
+
+return;
+}
+
+void mostrar(int mata[TAM][TAM], int n, int *fila, int *cols)
+{
+if(*cols==n-1 && *fila<n)
+{
+    printf("%d | ", mata[*fila][*cols]);
+    printf("\n");
+    *cols=0;
+    *fila+=1;
+    mostrar(mata, n, fila ,cols);
+}
+else
+{
+    if(*fila<n && *cols<n)
+    {
+        printf("%d | ", mata[*fila][*cols]);
+        *cols+=1;
+        mostrar(mata, n, fila, cols);
+    }
+}
+return;
+}
+
+int productodiag(int mata[TAM][TAM], int n, int *cont)
+{
+int aux;
+aux = mata[*cont][*cont];
+
+if(*cont < n)
+{
+    *cont+=1;
+    return aux*productodiag(mata, n, cont);
+}
+else
+    return aux;
+}

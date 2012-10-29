@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1281364899 source:d:\cabrera\matrices\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

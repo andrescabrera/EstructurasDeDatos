@@ -1,0 +1,21 @@
+void sumarInm(nInm *inm)
+{
+    if (inm->sigInm->sigInm != NULL)
+        sumarInm(inm->sigInm);
+    else
+    {
+        printf("el ultimo barrio es: %s", inm);
+        nInm *nuevoregistro;
+        nuevoregistro = (nInm*)malloc(sizeof(nInm));
+        printf("Ingrese la dirección del inmueble: ");
+        scanf(" %[^\n]", nuevoregistro->dir);
+        printf("Ingrese la cantidad de ambientes: ");
+        scanf("%d",&nuevoregistro->cantamb);
+        printf("Ingrese el precio del inmueble: ");
+        scanf("%f", &nuevoregistro->precio);
+        nuevoregistro->sigInm = NULL; //es el final de la lista
+
+        inm->sigInm = nuevoregistro;
+        inm = nuevoregistro;
+    }
+}

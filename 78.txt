@@ -1,0 +1,14 @@
+void mostrarOfertas (nInm *cabeza)
+{
+    int noferta = 0;
+    nInm *registro;
+    registro = cabeza;
+    system("cls");
+    printf("---------------------Listando las ofertas------------------------\n");
+    while (registro !=NULL)
+    {
+        printf ("\n\tOferta %d\n%s\nPrecio: $%.2f\n", noferta++, registro->dir, registro->precio);
+        registro = registro->sigInm;
+    }
+    return;
+}

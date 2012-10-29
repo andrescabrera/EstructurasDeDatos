@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1250721156 source:e:\cabrera\caracteres\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1250721365 source:e:\cabrera\caracteres\ejerc2.c
+	<stdio.h>
+	<stdlib.h>
+

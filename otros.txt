@@ -1,0 +1,46 @@
+nInm *buscarInmueble(nBarrio *b, char objetivo[])
+{
+    nInm *aux;
+    aux = b->baInm;
+
+    while (strcmp(aux->dir, objetivo) != 0 && aux->sigInm != NULL)
+        aux = aux->sigInm;
+    if(b->sigBar != NULL && aux->sigInm == NULL)
+        return buscarInmueble(b->sigBar, objetivo);
+    else
+        if (b->sigBar == NULL && aux->sigInm == NULL)
+            return NULL;
+        else
+            return b->baInm;
+}
+
+void bajaInmueble(nBarrio *b)
+{
+    nodo *marca;
+    nodo *temp;
+    char  objetivo  [40];
+
+    printf ("Ingrese direccion del inmueble a borrar: ");
+    scanf (" %[^\n]",objetivo);
+    if (strcmp(b->baInm->dir, objetivo)==0)
+    {
+        temp=b->baInm->sigInm->dir;
+        free(b->baInm);
+        b->baInm=temp;
+    }
+    else
+    {
+        marca=localizarInmueble(primero,objetivo);
+        if (marca==NULL)
+            printf("No se encuentra");
+        else
+        {
+            temp=marca->sig->sig;
+            free (marca->sig);
+            marca->sig=temp;
+        }
+    }
+    return primero;
+
+    system("pause");
+}

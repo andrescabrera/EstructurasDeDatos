@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1254388080 source:c:\users\andrés cabrera\documents\programacion\trabajo práctico 5 ejercicio 1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

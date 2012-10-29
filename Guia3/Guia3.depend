@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1250730125 source:e:\cabrera\guia3\main.c
+	<stdio.h>
+	<stdlib.h>
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Workspace">
+		<Project filename="Caracteres.cbp" />
+		<Project filename="..\tp1\tp1.cbp" />
+		<Project filename="..\Guia1\Guia1.cbp" />
+		<Project filename="..\guia2\guia2.cbp" />
+		<Project filename="..\Guia3\Guia3.cbp" />
+		<Project filename="..\guia 4\guia 4.cbp" active="1" />
+	</Workspace>
+</CodeBlocks_workspace_file>

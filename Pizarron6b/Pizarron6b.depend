@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1269046251 source:c:\documents and settings\labb5\mis documentos\pizarron6b\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

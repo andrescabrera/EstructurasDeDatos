@@ -1,0 +1,20 @@
+//DjHogar 0.2: Max310 + SK510 + SM95
+
+DJ Hogar, set para DJ.
+<em>Comprando este producto, te regalamos un descuento especial en:</em>
+
+Consolas, Microfonos, Auriculares y Cables
+<ul>
+<li><a class="ajax-cart-link" title="Click para agregar el producto" href="">Sumar Auriculares Dj3</a> ó <a class="ajax-cart-link" title="Click para agregar el producto" href="">Sumar Auriculares Dj5</a></li>
+<li><a class="ajax-cart-link" title="Click para agregar el producto" href="">Sumar Micrófono PRO 30</a></li>
+<li><a class="ajax-cart-link" title="Click para agregar el producto" href="">Sumar Set de Cables</a></li>
+</ul>
+
+Procesadores
+<ul>
+<li><a class="ajax-cart-link" title="Click para agregar el producto" href="">Agregar Caja Directa PD1</a></li>
+<li><a class="ajax-cart-link" title="Click para agregar el producto" href="">Agregar Procesador</a></li>
+<li><a class="ajax-cart-link" title="Click para agregar el producto" href="">Agregar Procesador</a></li>
+<li><a class="ajax-cart-link" title="Click para agregar el producto" href="">Agregar Procesador</a></li>
+<li><a class="ajax-cart-link" title="Click para agregar el producto" href="">Agregar Procesador</a></li>
+</ul>

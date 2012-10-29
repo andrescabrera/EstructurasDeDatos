@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1272056928 source:d:\documentos_andrescabrera\facultad\estructura de datos y algorítmos\programacion\tp\tp5 ej2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

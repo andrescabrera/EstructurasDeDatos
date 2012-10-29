@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1238797735 source:d:\recurs\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1238797868 source:c:\documents and settings\labb5\mis documentos\recurs\main.c
+	<stdio.h>
+	<stdlib.h>
+

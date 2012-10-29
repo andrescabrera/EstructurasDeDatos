@@ -1,0 +1,410 @@
+/*
+Andrés Cabrera - Leg. 53231
+Estructuras de Datos y Algoritmos - 2010
+----------------------------------------
+Trabajo Práctico 8
+Objetivo:
+Programar un sistema de ventas de inmuebles. El sistema contempla la modalidad usuario y la modalidad administrador.
+
+Modo Usuario:
+El usuario podrá ver los inmuebles en venta por barrio, por cantidad de ambientes o por el valor de los inmuebles.
+El usuario podrá ofertar por un inmueble. Esta oferta irá a una cola de ofertas que luego procesará el administrador.
+
+Modo Administrador:
+En esta modalidad, el administrador puede:
+
+•	Dar de alta a un nuevo Barrio
+•	Dar de alta a nuevos inmuebles.
+•	Dar de baja a un Barrio.
+•	Dar de baja a un Inmueble.
+•	Podrá  modificar el valor en dólares de un inmueble.
+•	Mostrar las ofertas a cada inmueble.
+•	Deberá procesar las colas
+
+Codificar en C los menúes correspondientes a cada modalidad..
+----------------------------------------------------------------------
+Trabajo Práctico 9
+La listas del  Trabajo Práctico Final  tienen las  siguientes estructuras:
+    Struct Barrio {
+             Char nombarrio [30];
+             Struct Inmuebles *BaInm;
+             Struct Barrio *sigBar;
+	}
+
+       Struct Inmuebles {
+            Char dir [40];
+            Int cantamb;
+            Float precio;
+            Struct  Inmuebles *sigInm;
+            }
+
+Bajar la información de estas listas de uno o dos archivos.
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct barrio
+{
+    char nombarrio [30];
+    struct inmuebles *baInm;
+    struct barrio *sigBar;
+} nodoBarrio;
+
+typedef struct inmuebles
+{
+    char dir [40];
+    int cantamb;
+    float precio;
+    struct inmuebles *sigInm;
+} nodoInmueble;
+
+
+void altaBarrio (nodoBarrio *barrio, nodoBarrio **fin);
+void bajaBarrio();
+void listarInmuebles(nodoBarrio *, char []);
+void mostrarInmueblesDelBarrio(nodoInmueble *);
+void mostrarxBarrio(nodoBarrio *);
+void altaInmueble(nodoBarrio *b, *fin);
+void bajaInmueble();
+void modificarInmueble();
+void procesarColas();
+int userMenu();
+int adminMenu();
+int iniciarSesion();
+void cerrarSesion();
+void ofertarInmuebles();
+void cargar(nodoBarrio *barrio,  FILE *i, nodoBarrio **fin);
+int buscarBarrio(nodoBarrio *b, char objetivo[]);
+
+int main()
+{
+    int opcion;
+
+    FILE *punfile;
+    nodoBarrio *fin;
+    nodoBarrio *barrios;
+    barrios = (nodoBarrio*)malloc(sizeof(nodoBarrio));
+
+    if ((punfile=fopen("archivo.dat","r"))==NULL)
+        printf("\n No se puede abrir el archivo!!");
+    else
+    {
+        cargar(barrios, punfile, &fin);
+        fclose(punfile);
+
+        opcion = iniciarSesion();
+        if (opcion == 1)
+        {
+            do
+            {
+                opcion = userMenu();
+                switch (opcion)
+                {
+                case 2:
+                    ofertarInmuebles();
+                    break;
+                case 4:
+                    listarInmuebles(barrios, "precio");
+                    break;
+                case 5:
+                    listarInmuebles(barrios, "barrio");
+                    break;
+                case 6:
+                    listarInmuebles(barrios, "ambientes");
+                    break;
+                }
+
+            }
+            while (opcion != 3);
+        }
+        else
+        {
+            do
+            {
+                opcion = adminMenu();
+                switch (opcion)
+                {
+                case 1:
+                    altaBarrio(barrios, &fin);
+                    listarInmuebles(barrios, "barrio");
+                    break;
+                case 2:
+                    bajaBarrio();
+                    break;
+                case 3:
+                    altaInmueble(barrios, &fin);
+                    break;
+                case 4:
+                    bajaInmueble();
+                    break;
+                case 5:
+                    modificarInmueble();
+                    break;
+                case 6:
+                    procesarColas();
+                    break;
+                }
+            }
+            while (opcion != 7);
+        }
+        cerrarSesion();
+    }
+    return EXIT_SUCCESS;
+}
+
+int iniciarSesion ()
+{
+    int op;
+    do
+    {
+        printf ("\nBienvenido\n--------------\n");
+        printf ("\n1 - Ingresar al modo usuario");
+        printf ("\n2 - Ingresar al modo administrador");
+        printf ("\nSeleccione una opcion: ");
+
+        scanf ("%d",&op);
+        if (op<1 || op>2)
+        {
+            printf("\nERROR: Intente otra vez");
+            system("cls");
+        }
+
+    }
+    while (op<1 || op>2);
+
+    printf ("\n");
+    return op;
+}
+
+int userMenu()
+{
+    int op;
+    system("cls");
+    printf("------------Bienvenido al modo usuario-----------------------");
+    do
+    {
+        printf("\n1 - Ver Inmuebles");
+        printf("\n2 - Ofertar Inmuebles");
+        printf("\n3 - Cerrar Sesion");
+        printf("\nSeleccione una opcion: ");
+        scanf("%d", &op);
+        if (op<1 || op>3)
+        {
+            printf("\nERROR: Intente otra vez\n");
+            system("pause");
+            system("cls");
+        }
+    }
+    while (op<1 || op>3);
+    if (op == 1)
+    {
+        printf("\n\n\n--------------------------------------------------------------\n\t\tListando los inmuebles\n");
+        do
+        {
+            printf("\nSeleccione una opcion:\n);
+                   printf("\t4- Mostrar por Precio\n);
+            printf("\t5- Mostrar por Barrio\n");
+            printf("\t6- Mostrar por Cantidad de Ambientes\n");
+            printf("\n\nSeleccione una opcion: ");
+            scanf("%d", &op);
+            if (op < 4 || op > 6)
+            {
+                printf("\nERROR: Ingrese nuevamente\n.");
+                system("pause");
+                system("cls");
+            }
+        }
+        while (op < 4 || op >6);
+    }
+
+    return op;
+}
+
+int adminMenu()
+{
+    int op;
+    system("cls");
+    printf("------------Bienvenido al modo administrador-----------------");
+    do
+    {
+        printf("\n1 - Dar de alta a un nuevo barrio");
+        printf("\n2 - Dar de baja a un barrio.");
+        printf("\n3 - Dar de alta inmuebles.");
+        printf("\n4 - Dar de baja inmuebles.");
+        printf("\n5 - Modificar precios.");
+        printf("\n6 - Procesar colas.");
+        printf("\n7 - Salir del sistema");
+        printf("\n\nSeleccione una opcion: ");
+        scanf("%d", &op);
+        if (op<1 || op>7)
+        {
+            printf("\nERROR: Intente otra vez\n");
+            system("pause");
+            system("cls");
+        }
+    }
+    while (op<1 || op>7);
+    return op;
+}
+
+void cargar(nodoBarrio *barrio,  FILE *i, nodoBarrio **fin)
+{
+    char unstring[40];
+    int unentero;
+    float unfloat;
+
+    nodoInmueble *aux; // IMPORTANTE trabajo con una copia!!
+    fscanf(i, "\n%[^\n] %d %f", unstring, &unentero, &unfloat); //leo el primer barrio
+
+    while (!feof(i))
+    {
+        strcpy(barrio->nombarrio, unstring);
+        *fin = barrio;
+        fscanf(i, "\n%[^\n] %d %f", unstring, &unentero, &unfloat);
+        barrio->baInm = (nodoInmueble*)malloc(sizeof(nodoInmueble));
+        aux = barrio->baInm;
+        if (feof(i)) //TODO - evitar tener que cargar el ultimo inmueble del ultimo barrio
+        {
+            strcpy(aux->dir, unstring);
+            aux->cantamb = unentero;
+            aux->precio = unfloat;
+            aux->sigInm = (nodoInmueble*)malloc(sizeof(nodoInmueble));
+            aux = aux->sigInm;
+        }
+        while (!feof(i) && unentero != 0 && unfloat != 0) //leo el resto de los inmuebles
+        {
+            strcpy(aux->dir, unstring);
+            aux->cantamb = unentero;
+            aux->precio = unfloat;
+            aux->sigInm = (nodoInmueble*)malloc(sizeof(nodoInmueble));
+            aux = aux->sigInm;
+            fscanf(i, "\n%[^\n] %d %f", unstring, &unentero, &unfloat); //leo el primer barrio
+        }
+        aux->sigInm = NULL; //cierro la lista de inmuebles
+        barrio->sigBar=(nodoBarrio*)malloc(sizeof(nodoBarrio));
+        barrio = barrio->sigBar;
+    }
+    barrio=NULL; //cierro la lista de barrios
+}
+
+void altaInmueble(nodoBarrio *b, *fin)
+{
+    int op;
+    printf("\n\n\tDoy de alta un inmueble\n");
+    printf("Ingrese el barrio al que pertenece");
+    scanf("%[^\n]", &objetivo);
+    if (buscarBarrio(b, objetivo))
+    {
+        do
+        {
+            printf("El barrio no existe. Desea dar de alta un barrio ahora?\n\t 1- Si, 2- No\n");
+            scanf("%d", op);
+            if (op < 1 || op > 2)
+                printf("\n Opcion Incorrecta. Intente nuevamente.");
+        }
+        while (op < 1 || op > 2);
+        if(op == 1)
+            altaBarrio(b, &fin);
+    }
+    else
+    {
+        //TODO alta inmueble
+    }
+    system("pause");
+}
+void bajaInmueble()
+{
+    printf("\n\n\tDoy de baja un inmueble\n");
+    system("pause");
+}
+void modificarInmueble()
+{
+    printf("\n\n\tCambio el precio de un inmueble\n");
+    system("pause");
+}
+
+//INSERTAR
+void altaBarrio (nodoBarrio *barrio, nodoBarrio **fin)
+{
+    nodoBarrio *nuevoregistro;
+    char objetivo[30];
+
+    printf("\nIngrese el nombre del nuevo barrio: ");
+    scanf(" %[^\n]", objetivo);
+
+    if (buscarBarrio(barrio, objetivo))
+    {
+        nuevoregistro=(nodoBarrio*)malloc(sizeof(nodoBarrio));
+        strcpy(nuevoregistro->nombarrio, objetivo);
+        nuevoregistro->sigBar = NULL;
+        nuevoregistro->baInm = (nodoInmueble*)malloc(sizeof(nodoInmueble));
+        nuevoregistro->baInm->sigInm = NULL;
+        (*fin)->sigBar=nuevoregistro;
+        (*fin) = nuevoregistro;
+    }
+    else
+        printf("\nEl barrio ya existe, no se pudo agregar.");
+
+    system("pause");
+    return;
+}
+
+int buscarBarrio(nodoBarrio *b, char objetivo[])
+{
+    if (b->sigBar != NULL && b->nombarrio != objetivo)
+        return buscarBarrio(b->sigBar, objetivo);
+    else
+        if (b->sigBar == NULL)
+            return 1;
+        else
+            return 0;
+}
+void bajaBarrio()
+{
+    printf("\n\n\tDoy de baja un barrio\n");
+    system("pause");
+}
+void procesarColas()
+{
+    printf("\n\n\tYo procesar la cola...\n");
+    system("pause");
+}
+void cerrarSesion()
+{
+    printf("\n\n\tYo cierro el programa, guardando los datos a disco, suerte amigo.\n");
+    printf("\n\nSaliendo del sistema!!.\n");
+}
+void listarInmuebles(nodoBarrio *b, char sortorder[20])
+{
+    system("cls");
+    printf("\n\n\tMostrando los inmuebles por %s\n", sortorder);
+    if (strcmp(sortorder, "barrio") == 0)
+        mostrarxBarrio(b);
+
+    system("pause");
+}
+void mostrarxBarrio(nodoBarrio *barrio)
+{
+    nodoInmueble *b;
+
+    if (barrio->sigBar != NULL)
+    {
+        printf("\nInmuebles de %s\n", barrio->nombarrio);
+        b = barrio->baInm;
+        while (b->sigInm != NULL)
+        {
+            printf("%s, %d, $%.2f\n", b->dir, b->cantamb, b->precio);
+            b = b->sigInm;
+        }
+        mostrarxBarrio(barrio->sigBar);
+    }
+    return;
+}
+
+void ofertarInmuebles()
+{
+    printf("\n\n\tYo permito que el usuario realice ofertas.\n");
+    system("pause");
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Workspace">
+		<Project filename="Ejercicio4\Ejercicio4.cbp" />
+		<Project filename="EJ2\EJ2.cbp" />
+		<Project filename="EJ1\EJ1.cbp" />
+		<Project filename="ClaseEJ2\ClaseEJ2.cbp" active="1" />
+	</Workspace>
+</CodeBlocks_workspace_file>

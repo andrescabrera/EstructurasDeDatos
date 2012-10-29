@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1285731852 source:d:\documentos_andrescabrera\facultad\sin organizar\nueva carpeta\caroej1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

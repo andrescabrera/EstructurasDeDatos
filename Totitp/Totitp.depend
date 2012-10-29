@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1288510611 source:d:\documentos_andrescabrera\facultad\sin organizar\nueva carpeta\totitp\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

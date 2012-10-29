@@ -1,0 +1,15 @@
+void listarInmuebles(nBarrio *b, char sortorder[20])
+{
+    system("pause");
+    system("cls");
+    printf("\t---------Mostrando los inmuebles por %s---------\n\n\n", sortorder);
+    if (strcmp(sortorder, "barrio") == 0)
+        mostrarxBarrio(b);
+    else
+        if (strcmp(sortorder, "precio") == 0)
+            mostrarOrdenada(b);
+        else
+            mostrarOrdenada(b);
+
+    system("pause");
+}

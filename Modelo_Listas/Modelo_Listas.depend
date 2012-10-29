@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1284983094 source:d:\documentos_andrescabrera\facultad\estructura de datos y algorítmos\programacion\modelo_listas\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+
+1288711925 source:e:\documentos_andrescabrera\facultad\estructura de datos y algorítmos\programacion\modelo_listas\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+
